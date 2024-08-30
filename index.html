@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Bio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1 class="header-title">Ian & Ronna</h1>
+    <img src="./image/monogram/monogram_circle_1500x1500.png" alt="Header Image"class="monogram-image">
+    <p>From I To We</p>
+</header>
+
+
+<div class="container">
+    <h2 onclick="toggleContent('rsvp')">RSVP - Reserve on</h2>
+    <div id="rsvp" class="content"> <!-- Embed the RSVP link -->
+        <iframe src="https://withjoy.com/ian-and-ronna-nov-24/rsvp" width="100%" height="600" style="border:none;" allowfullscreen></iframe>
+    </div>
+
+    <h2 onclick="toggleContent('photos')">Photos</h2>
+    <div id="photos" class="content"> 
+        <div class="slideshow-container">
+            <div class="slideshow">
+                <img src="./image/monogram/monogram_circle_1500x1500.png" alt="Image 1">
+                <img src="./image/monogram/monogram_square_1500x1500.png" alt="Image 2">
+                <img src="./image/monogram/monogram_transparent_1500x1500.png" alt="Image 3">
+            </div>
+            <button class="nav-button prev" onclick="prevImage()">&#10094;</button>
+            <button class="nav-button next" onclick="nextImage()">&#10095;</button>
+        </div>
+    </div>
+
+    <h2 onclick="toggleContent('videoPrenup')">Pre-Wedding Video</h2>
+    <div id="videoPrenup" class="content">
+        <div class="responsive-iframe">
+            <iframe src="https://www.youtube.com/embed/vZVZMuK2cac?autoplay=2&mute=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <h2 onclick="toggleContent('interests')">Interests</h2>
+    <div id="interests" class="content">
+        <ul>
+            <li>Interest 1</li>
+            <li>Interest 2</li>
+            <li>Interest 3</li>
+        </ul>
+    </div>
+
+    <h2 onclick="toggleContent('einvite')">E-Invite</h2>
+    <div id="einvite" class="content">
+        <div class="responsive-iframe" style="padding-bottom: 120%; height: 0;">
+            <iframe src="https://heyzine.com/flip-book/b6950513b3.html" frameborder="0"></iframe>
+        </div>
+        <div class="social-links">
+            <a href="mailto:your-email@example.com">Email</a><br>
+            <a href="https://twitter.com/yourprofile">Twitter</a><br>
+            <a href="https://linkedin.com/in/yourprofile">LinkedIn</a><br>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Ian and Ronna. All rights reserved.</p>
+</footer>
+
+<!-- Background music -->
+<audio id="background-music" src="bgm/Ikaw-Lang-piano.mp3" autoplay loop muted></audio>
+
+
+<script src="script.js"></script>
+</body>
+</html>
