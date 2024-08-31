@@ -14,8 +14,10 @@ body {
 header {
     background: #660033;
     color: #ffffff;
-    padding: 20px 0;
     text-align: center;
+    overflow-y: auto;
+    position: sticky;
+    top: 0;
     /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
 }
 
@@ -25,10 +27,9 @@ header {
     padding: 0;
     margin-top: 0;
     margin-bottom: 0;
-}
-
-.header-subtitle {
-    font-family: Arial, sans-serif; /* Apply a different font if needed */
+    background: rgba(221, 82, 82, 0.3); /* Adjust opacity as needed */
+    cursor: default;
+    user-select: none;
 }
 
 .monogram-image {
@@ -38,10 +39,10 @@ header {
 }
 
 .container {
-    width: 80%;
+    width: 95%;
     margin: auto;
     overflow: hidden;
-    padding: 20px;
+    padding: 10px;
     background: rgba(255, 255, 255, 0.3); /* Adjust opacity as needed */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -63,7 +64,7 @@ h2:hover {
 .content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.7s ease-out;
+    transition: max-height 0.5s ease-out;
 }
 .content.expanded {
     max-height: 1000px; /* Arbitrarily large value to allow for expansion */
@@ -92,7 +93,7 @@ h2:hover {
 }
 
 #einvite iframe {
-    max-height: 700px; /* Ensure the iframe doesn't exceed this height */
+    max-height: 750px; /* Ensure the iframe doesn't exceed this height */
 }
 .slideshow-container {
     position: relative;
@@ -161,4 +162,55 @@ footer {
     margin: 0 10px;
     text-decoration: none;
     color: #35424a;
+}
+
+.play-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #35424a;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+}
+
+.countdown-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1em; /* Adjust size as needed */
+}
+
+.time-unit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time-unit {
+    text-align: center;
+    padding: 10px;
+    background: #f4f4f4;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    min-width: 10px;
+    max-width: 30px;
+}
+
+.time-label {
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #35424a;
+}
+
+.divider {
+    padding: 0 10px;
 }

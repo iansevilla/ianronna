@@ -1,10 +1,28 @@
-// Toggle content function
+// Function to toggle content visibility and scroll into view
 function toggleContent(id) {
     const content = document.getElementById(id);
+    const allContents = document.querySelectorAll('.content');
+
+    // Close all sections
+    allContents.forEach(section => {
+        if (section !== content) {
+            section.classList.remove('expanded');
+        }
+    });
+
+    // Toggle the clicked section
+    content.classList.toggle('expanded');
+
+    // Scroll the expanded content into view with offset
     if (content.classList.contains('expanded')) {
-        content.classList.remove('expanded');
-    } else {
-        content.classList.add('expanded');
+        setTimeout(() => {
+            const headerOffset = document.querySelector('header').offsetHeight;
+            const contentTop = content.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({
+                top: contentTop - headerOffset,
+                behavior: 'smooth'
+            });
+        }, 300); // Adjust delay if needed
     }
 }
 
