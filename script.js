@@ -13,15 +13,39 @@ function toggleContent(id) {
     // Toggle the clicked section
     content.classList.toggle('expanded');
 
-    // Scroll the expanded content into view with offset
+    // Scroll the expanded content into view with adjusted offset
     if (content.classList.contains('expanded')) {
         setTimeout(() => {
-            const headerOffset = document.querySelector('header').offsetHeight;
+            const header = document.querySelector('header');
+            const headerHeight = header.offsetHeight;
             const contentTop = content.getBoundingClientRect().top + window.pageYOffset;
-            window.scrollTo({
-                top: contentTop - headerOffset,
-                behavior: 'smooth'
-            });
+            const contentHeight = content.offsetHeight;
+            const viewportHeight = window.innerHeight;
+
+            // Adjusted offset to ensure the content is visible below the sticky header
+            const offset = headerHeight + 30; // Additional margin to ensure visibility
+
+            // Calculate the desired top position
+            const desiredTop = contentTop - offset;
+
+            // Calculate bottom position
+            const contentBottom = contentTop + contentHeight;
+            const desiredBottom = contentBottom - viewportHeight;
+
+            // Scroll to ensure the content is fully visible
+            if (contentBottom > window.pageYOffset + viewportHeight) {
+                // Scroll up if content is below the viewport
+                window.scrollTo({
+                    top: Math.max(desiredTop, window.pageYOffset),
+                    behavior: 'smooth'
+                });
+            } else {
+                // Scroll down if content is above the viewport
+                window.scrollTo({
+                    top: desiredTop,
+                    behavior: 'smooth'
+                });
+            }
         }, 300); // Adjust delay if needed
     }
 }
