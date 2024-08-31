@@ -60,52 +60,55 @@ h2 {
     text-align: center;
     transition: background-color 0.3s;
 }
-
+/* Style for the section container */
 .section {
     margin-bottom: 5px; /* Space between sections */
 }
 
-h3:hover {
-    background-color: #445963;
-}
-
+/* Style for the h3 headers */
 h3 {
     background-color: #35424a;
     color: #ffffff;
     padding: 10px;
     cursor: pointer;
     margin: 0;
-    text-align: left;
-    position: relative; /* Position relative for better icon placement */
-    padding-left: 50px; /* Adjust space for the icon */
-    display: flex;
-    align-items: center; /* Align text and icon vertically */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Vertically center the items */
+    position: relative; /* Ensure proper positioning of the icon */
+    padding-left: 80px; /* Space for the icon */
 }
 
+/* Style for the section icon */
 .section-icon {
     position: absolute; /* Position absolutely within the header */
-    left: 30%; /* Space from the left edge */
-    width: 40px; /* Adjust size as needed */
-    height: 40px; /* Adjust size as needed */
+    left: 15px; /* Space from the left edge */
+    width: 35px; /* Adjust size as needed */
+    height: 35px; /* Adjust size as needed */
 }
 
+/* Ensure content sections are handled correctly */
 .content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease-out;
-    background: #f9f9f9; /* Background color for content */
 }
 
 .content.expanded {
     max-height: 1000px; /* Arbitrarily large value to allow for expansion */
 }
 
-.section-image {
-    width: 50px; /* Adjust size as needed */
-    height: 50px; /* Adjust size as needed */
-    display: block; /* Ensure the image is displayed as a block */
-    margin: 0 auto 10px; /* Center the image and add margin below */
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    h3 {
+        padding-left: 80px; /* Adjust space for the icon on smaller screens */
+        font-size: 1rem; /* Reduce text size for smaller screens */
+    }
+    .section-icon {
+        width: 30px; /* Reduce icon size for smaller screens */
+        height: 30px; /* Reduce icon size for smaller screens */
+    }
 }
+
 
 .responsive-iframe {
     position: relative;
