@@ -1,3 +1,4 @@
+/* Slideshow container styling */
 .slideshow-container {
     position: relative;
     width: 100%; /* Full width */
@@ -9,8 +10,10 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center; /* Center the slideshow vertically */
+    z-index: 1; /* Place the slideshow behind the header */
 }
 
+/* Slideshow images styling */
 .slideshow {
     display: flex;
     transition: transform 0.5s ease-in-out;
@@ -26,8 +29,9 @@
     object-fit: contain; /* Fit images within container while preserving aspect ratio */
 }
 
+/* Navigation buttons styling */
 .nav-button {
-    position: absolute;
+    position: fixed; /* Fixed position to center on screen */
     top: 50%;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5);
@@ -36,13 +40,48 @@
     font-size: 24px;
     cursor: pointer;
     padding: 10px;
-    z-index: 1;
+    z-index: 2; /* Ensure buttons are above slideshow and header */
+    opacity: 0; /* Start invisible */
+    pointer-events: none; /* Disable interaction until fully visible */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Smooth transition */
 }
 
+/* Position prev/next buttons */
 .prev {
-    left: 10px;
+    left: 20px; /* Keep it to the left */
 }
 
 .next {
-    right: 10px;
+    right: 20px; /* Keep it to the right */
+}
+
+/* Smooth fade-in keyframe */
+@keyframes smoothFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50%) scale(0.9); /* Start slightly smaller */
+    }
+    99% {
+        opacity: 1;
+        pointer-events: none; /* Still disable interaction during animation */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-50%) scale(1); /* Grow to full size */
+        pointer-events: auto; /* Enable interaction */
+    }
+}
+
+/* Show navigation buttons when the content is expanded */
+.content.expanded .nav-button {
+    opacity: 1;
+    pointer-events: auto; /* Enable interaction when expanded */
+    animation: smoothFadeIn 1s ease-in-out forwards; /* Trigger fade-in animation */
+}
+
+/* Hide navigation buttons when the content is collapsed */
+.content:not(.expanded) .nav-button {
+    opacity: 0;
+    pointer-events: none; /* Disable interaction when collapsed */
+    transition: opacity 0.5s ease-in-out; /* Smooth fade-out */
 }

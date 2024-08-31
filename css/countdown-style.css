@@ -1,0 +1,45 @@
+.countdown-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1em; /* Adjust size as needed */
+}
+
+.time-unit {
+    text-align: center;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.4); /* Adjust opacity as needed */
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 20px; /* Increased to accommodate time value and label */
+    max-width: 60px; /* Adjust based on your design */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-value {
+    font-size: 1.5em; /* Adjust size as needed */
+}
+
+.time-label {
+    margin-top: 5px;
+    font-size: 0.8em;
+    color: #35424a;
+}
+
+.divider {
+    padding: 0 5px;
+    font-size: 1.5em; /* Increase size for better visibility */
+    color: #ffffff; /* Adjust the color to match the theme */
+    font-weight: bold; /* Make it bold for better emphasis */
+    text-shadow: 0px 0px 2px #dad5d5; /* Add a subtle shadow for contrast */
+}
