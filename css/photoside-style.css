@@ -1,0 +1,48 @@
+.slideshow-container {
+    position: relative;
+    width: 100%; /* Full width */
+    max-width: 100%; /* Ensures responsiveness */
+    max-height: 500px; /* Fixed maximum height limit */
+    margin: auto;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center; /* Center the slideshow vertically */
+}
+
+.slideshow {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%; /* Make slideshow occupy full width */
+    height: 100%; /* Make slideshow occupy full height */
+}
+
+.slideshow img {
+    flex-shrink: 0;
+    width: 100%; /* Ensure images scale to fit width */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 500px; /* Ensure images do not exceed the maximum height */
+    object-fit: contain; /* Fit images within container while preserving aspect ratio */
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}

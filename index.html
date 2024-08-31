@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name - Bio</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/photoside-style.css">
+    <link rel="stylesheet" href="css/chat-style.css">
 </head>
 <body>
 
@@ -13,87 +15,172 @@
    
 </header>
 
+<h2 class="header-title">Ian & Ronna</h2>
 
 
-<!-- Countdown placed directly under the header -->
-<div class="countdown-container">
-    <h2 class="header-title">Ian & Ronna</h2>
-    
-    <div id="countdown" class="countdown">
-        <div class="time-unit-container">
-            <div id="months" class="time-unit"></div>
-            <div class="time-label">Months</div>
-        </div>
-        <div class="divider">:</div>
-        <div class="time-unit-container">
-            <div id="days" class="time-unit"></div>
-            <div class="time-label">Days</div>
-        </div>
-        <div class="divider">:</div>
-        <div class="time-unit-container">
-            <div id="hours" class="time-unit"></div>
-            <div class="time-label">Hours</div>
-        </div>
-        <div class="divider">:</div>
-        <div class="time-unit-container">
-            <div id="minutes" class="time-unit"></div>
-            <div class="time-label">Minutes</div>
-        </div>
-        <div class="divider">:</div>
-        <div class="time-unit-container">
-            <div id="seconds" class="time-unit"></div>
-            <div class="time-label">Seconds</div>
+
+<div id="countdown" class="countdown">
+    <div class="time-unit-container">
+        <div id="months" class="time-unit">
+            <div class="time-value"></div>
+            <div class="time-label">Mon(s)</div>
         </div>
     </div>
-
+    <div class="divider">:</div>
+    <div class="time-unit-container">
+        <div id="days" class="time-unit">
+            <div class="time-value"></div>
+            <div class="time-label">Day(s)</div>
+        </div>
+    </div>
+    <div class="divider">:</div>
+    <div class="time-unit-container">
+        <div id="hours" class="time-unit">
+            <div class="time-value"></div>
+            <div class="time-label">Hr(s)</div>
+        </div>
+    </div>
+    <div class="divider">:</div>
+    <div class="time-unit-container">
+        <div id="minutes" class="time-unit">
+            <div class="time-value"></div>
+            <div class="time-label">Min(s)</div>
+        </div>
+    </div>
+    <div class="divider">:</div>
+    <div class="time-unit-container">
+        <div id="seconds" class="time-unit">
+            <div class="time-value"></div>
+            <div class="time-label">Sec(s)</div>
+        </div>
+    </div>
 </div>
 
 
 <div class="container">
-    <h2 onclick="toggleContent('rsvp')">RSVP - Reserve on</h2>
-    <div id="rsvp" class="content"> <!-- Embed the RSVP link -->
-        <iframe src="https://withjoy.com/ian-and-ronna-nov-24/rsvp" width="100%" height="600" style="border:none;" allowfullscreen></iframe>
+    <div class="section">
+        <h3 onclick="toggleContent('rsvp')">
+            <img src="path-to-your-icon.png" alt="RSVP Icon" class="section-icon">
+            RSVP - Reserve on
+        </h3>
+        <div id="rsvp" class="content">
+            <iframe src="https://withjoy.com/ian-and-ronna-nov-24/rsvp" width="100%" height="600" style="border:none;" allowfullscreen></iframe>
+        </div>
     </div>
 
-    <h2 onclick="toggleContent('photos')">Photos</h2>
-    <div id="photos" class="content"> 
-        <div class="slideshow-container">
-            <div class="slideshow">
+    <div class="section">
+        <h3 onclick="toggleContent('photos')">
+            <img src="path-to-your-icon.png" alt="RSVP Icon" class="section-icon">
+            Photos
+        </h3>
+        <div id="photos" class="content">
+           <div class="slideshow">
                 <img src="./image/monogram/monogram_circle_1500x1500.png" alt="Image 1">
                 <img src="./image/monogram/monogram_square_1500x1500.png" alt="Image 2">
                 <img src="./image/monogram/monogram_transparent_1500x1500.png" alt="Image 3">
             </div>
             <button class="nav-button prev" onclick="prevImage()">&#10094;</button>
-            <button class="nav-button next" onclick="nextImage()">&#10095;</button>
+            <button class="nav-button next" onclick="nextImage()">&#10095;</button>        
+	</div>
+    </div>
+    
+
+    <div class="section">
+        <h3 onclick="toggleContent('videoPrenup')">
+            <img src="path-to-your-icon.png" alt="Pre-Wedding Icon" class="section-icon">
+            Pre-Wedding Video
+        </h3>
+        <div id="videoPrenup" class="content">
+            <div class="responsive-iframe">
+                <iframe src="https://www.youtube.com/embed/vZVZMuK2cac?autoplay=2&mute=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
+    
 
-    <h2 onclick="toggleContent('videoPrenup')">Pre-Wedding Video</h2>
-    <div id="videoPrenup" class="content">
-        <div class="responsive-iframe">
-            <iframe src="https://www.youtube.com/embed/vZVZMuK2cac?autoplay=2&mute=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div class="section">
+        <h3 onclick="toggleContent('faq')">
+            <img src="path-to-your-icon.png" alt="FAQ Icon" class="section-icon">
+            FAQ
+        </h3>
+        <div id="faq" class="content">
+            <div class="chat-container">
+                <!-- Question -->
+                <div class="chat-bubble question">
+                    <div class="avatar">
+                        <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar-image">
+                    </div>
+                    <div class="chat-content">
+                        <strong>Question:</strong> Can I bring a Plus 1?
+                    </div>
+                </div>
+                
+                <!-- Answer -->
+                <div class="chat-bubble answer">
+                    <div class="avatar">
+                        <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar-image">
+                    </div>
+                    <div class="chat-content">
+                        <strong>Answer:</strong> No
+                    </div>
+                </div>
+    
+                <!-- Question -->
+                <div class="chat-bubble question">
+                    <div class="avatar">
+                        <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar-image">
+                    </div>
+                    <div class="chat-content">
+                        <strong>Question:</strong> Can I bring a Plus 1?
+                    </div>
+                </div>
+                
+                <!-- Answer -->
+                <div class="chat-bubble answer">
+                    <div class="avatar">
+                        <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar-image">
+                    </div>
+                    <div class="chat-content">
+                        <strong>Answer:</strong> No
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    
 
-    <h2 onclick="toggleContent('interests')">Interests</h2>
-    <div id="interests" class="content">
-        <ul>
-            <li>Interest 1</li>
-            <li>Interest 2</li>
-            <li>Interest 3</li>
-        </ul>
+    <div class="section">
+        <h3 onclick="toggleContent('interests')">
+            <img src="path-to-your-icon.png" alt="Interests Icon" class="section-icon">
+            Interests
+        </h3>
+        <div id="interests" class="content">
+            <ul>
+                <li>Interest 1</li>
+                <li>Interest 2</li>
+                <li>Interest 3</li>
+            </ul>
+        </div>
     </div>
+    
 
-    <h2 onclick="toggleContent('einvite')">E-Invite</h2>
-    <div id="einvite" class="content">
-        <div class="responsive-iframe" style="padding-bottom: 120%; height: 0;">
-            <iframe src="https://heyzine.com/flip-book/b6950513b3.html" frameborder="0"></iframe>
+    <div class="section">
+        <h3 onclick="toggleContent('einvite')">
+            <img src="path-to-your-icon.png" alt="E-Invite Icon" class="section-icon">
+            E-Invite
+        </h3>
+        <div id="einvite" class="content">
+            <div class="responsive-iframe" style="padding-bottom: 120%; height: 0;">
+                <iframe src="https://heyzine.com/flip-book/b6950513b3.html" frameborder="0"></iframe>
+            </div>
         </div>
-        <div class="social-links">
-            <a href="mailto:your-email@example.com">Email</a><br>
-            <a href="https://twitter.com/yourprofile">Twitter</a><br>
-            <a href="https://linkedin.com/in/yourprofile">LinkedIn</a><br>
-        </div>
+    </div>
+    
+
+    <div class="social-links">
+        <a href="mailto:your-email@example.com">Email</a><br>
+        <a href="https://twitter.com/yourprofile">Twitter</a><br>
+        <a href="https://linkedin.com/in/yourprofile">LinkedIn</a><br>
     </div>
 </div>
 
