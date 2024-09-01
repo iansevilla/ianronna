@@ -5,6 +5,9 @@
     display: flex;
     flex-direction: column; /* Stack items vertically */
     gap: 10px; /* Space between bubbles */
+    max-height: 400px; /* Adjust the height as needed */
+    overflow-y: auto;
+    padding-right: 10px; /* Optional: Add some padding for better visibility of scrollbar */
 }
 
 .chat-bubble {
@@ -17,20 +20,26 @@
     align-items: flex-start; /* Align items at the start */
 }
 
-.question {
-    background-color: #f1f1f1;
+.answer {
+    background-color: #dfdcdc;
     color: #333;
-    align-self: flex-start; /* Align questions to the left */
+    align-self: flex-start; /* Align answers to the left */
+    flex-direction: row; /* Text before avatar in answer */
 }
 
-.answer {
+.question {
     background-color: #0084ff;
     color: #fff;
-    align-self: flex-end; /* Align answers to the right */
+    align-self: flex-end; /* Align questions to the right */
+    font-size: 110%;
+    font-weight: bold;
+    vertical-align: middle;
+    flex-direction: row-reverse; /* Text before avatar in question */
 }
 
 .avatar {
-    margin-right: 10px; /* Space between avatar and chat bubble */
+    margin-left: 10px; /* Space between text and avatar for questions */
+    margin-right: 10px; /* Space between avatar and text for answers */
     flex-shrink: 0; /* Prevent avatar from shrinking */
 }
 
@@ -43,27 +52,4 @@
 
 .chat-content {
     font-size: 1em;
-    flex: 1; /* Ensure content takes remaining space */
-}
-
-.question::after, .answer::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-}
-
-.question::after {
-    border-width: 10px 10px 10px 0;
-    border-color: transparent #f1f1f1 transparent transparent;
-    left: -10px;
-    top: 10px;
-}
-
-.answer::after {
-    border-width: 10px 0 10px 10px;
-    border-color: transparent transparent transparent #0084ff;
-    right: -10px;
-    top: 10px;
-}
+    flex: 

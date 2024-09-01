@@ -13,6 +13,7 @@ body {
 }
 header {
     background: #660033;
+    background: rgba(102, 0, 51, .5); /* Adjust opacity as needed */
     color: #ffffff;
     text-align: center;
     overflow-y: auto;

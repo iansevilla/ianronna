@@ -1,4 +1,3 @@
-// Function to toggle content visibility and scroll into view
 function toggleContent(id) {
     const content = document.getElementById(id);
     const allContents = document.querySelectorAll('.content');
@@ -28,21 +27,17 @@ function toggleContent(id) {
             // Calculate the desired top position
             const desiredTop = contentTop - offset;
 
-            // Calculate bottom position
-            const contentBottom = contentTop + contentHeight;
-            const desiredBottom = contentBottom - viewportHeight;
-
-            // Scroll to ensure the content is fully visible
-            if (contentBottom > window.pageYOffset + viewportHeight) {
-                // Scroll up if content is below the viewport
+            // Ensure content fits within the viewport
+            if (contentHeight > viewportHeight) {
+                // When content height is greater than viewport height, scroll to ensure top visibility
                 window.scrollTo({
-                    top: Math.max(desiredTop, window.pageYOffset),
+                    top: desiredTop,
                     behavior: 'smooth'
                 });
             } else {
-                // Scroll down if content is above the viewport
+                // When content height fits within the viewport, scroll to ensure content is fully visible
                 window.scrollTo({
-                    top: desiredTop,
+                    top: Math.max(desiredTop, window.pageYOffset),
                     behavior: 'smooth'
                 });
             }
