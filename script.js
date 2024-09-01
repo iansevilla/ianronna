@@ -98,3 +98,12 @@ slideshowContainer.addEventListener('touchend', (e) => {
         }
     }
 });
+
+function copyPhoneNumber() {
+    const phoneNumber = "+639171327996";
+    navigator.clipboard.writeText(phoneNumber).then(() => {
+        alert("Phone number copied to clipboard: " + phoneNumber);
+    }).catch(err => {
+        console.error('Could not copy text: ', err);
+    });
+}
