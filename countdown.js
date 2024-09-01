@@ -30,3 +30,20 @@ setInterval(updateCountdown, 1000);
 
 // Initialize countdown on page load
 updateCountdown();
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var coverImage = document.getElementById('cover-image-img');
+
+    if (coverImage) {
+        coverImage.addEventListener('click', function() {
+            var coverDiv = document.getElementById('cover-image');
+            if (coverDiv) {
+                coverDiv.classList.add('fade-out');
+                setTimeout(function() {
+                    coverDiv.style.display = 'none';
+                }, 500);
+            }
+        });
+    }
+});
