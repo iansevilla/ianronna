@@ -2,7 +2,7 @@ function toggleContent(id) {
     const content = document.getElementById(id);
     const allContents = document.querySelectorAll('.content');
 
-    // Close all sections
+    // Close all sections except the one that was clicked
     allContents.forEach(section => {
         if (section !== content) {
             section.classList.remove('expanded');
@@ -44,6 +44,7 @@ function toggleContent(id) {
         }, 300); // Adjust delay if needed
     }
 }
+
 
 let currentIndex = 0;
 const slideshow = document.querySelector('.slideshow');
