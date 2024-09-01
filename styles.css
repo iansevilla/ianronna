@@ -108,7 +108,7 @@ h5 {
 }
 
 .content.expanded {
-    max-height: 1000px; /* Arbitrarily large value to allow for expansion */
+    max-height: 1200px; /* Arbitrarily large value to allow for expansion */
 }
 
 /* Responsive adjustments */
