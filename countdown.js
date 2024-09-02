@@ -46,4 +46,87 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
+});
+
+ 
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Delay to ensure styles are applied properly
+    setTimeout(() => {
+        document.querySelectorAll('.flower').forEach(flower => {
+            const isLeftFlower = flower.id === 'leftFlower';
+            const isRightFlower = flower.id === 'rightFlower';
+
+            if (isLeftFlower) {
+                flower.style.left = '0';
+                flower.style.right = ''; // Clear any right property
+            } 
+            
+            if (isRightFlower) {
+                flower.style.right = '0';
+                flower.style.left = ''; // Clear any left property
+                flower.classList.add('flipped');
+                flower.style.top = '80%';
+            }
+        });
+    }, 500); // Adjust delay if needed
+});
+
+let currentDragging = null;
+document.querySelectorAll('.flower').forEach(function(flower) {
+    flower.addEventListener('mousedown', function(event) {
+        if (currentDragging) return; // Prevent dragging if another flower is already being dragged
+
+        currentDragging = flower;
+
+        let shiftX = event.clientX - flower.getBoundingClientRect().left;
+        let shiftY = event.clientY - flower.getBoundingClientRect().top;
+
+        function moveAt(pageX, pageY) {
+            flower.style.left = pageX - shiftX + 'px';
+            flower.style.top = pageY - shiftY + 'px';
+        }
+
+        function onMouseMove(event) {
+            moveAt(event.pageX, event.pageY);
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
+
+        function onMouseUp() {
+            document.removeEventListener('mousemove', onMouseMove);
+            document.removeEventListener('mouseup', onMouseUp);
+
+            // Snap to left or right side and flip image if needed
+            const flowerRect = flower.getBoundingClientRect();
+            const middleOfScreen = window.innerWidth / 2;
+
+            if (flowerRect.left < middleOfScreen) {
+                flower.style.left = '0';
+                flower.style.right = ''; // Clear any right property
+                flower.classList.remove('flipped');
+            } else {
+                flower.style.right = '0';
+                flower.style.left = ''; // Clear any left property
+                flower.classList.add('flipped');
+            }
+
+            currentDragging = null; // Reset currentDragging when done
+        }
+
+        document.addEventListener('mouseup', onMouseUp);
+
+        // Ensure dragging stops when clicking elsewhere
+        document.addEventListener('click', function(event) {
+            if (currentDragging && !currentDragging.contains(event.target)) {
+                // Trigger mouse up handler to stop dragging
+                onMouseUp();
+            }
+        });
+    });
+
+    flower.ondragstart = function() {
+        return false;
+    };
 });

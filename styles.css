@@ -235,3 +235,29 @@ footer {
 #cover-image.fade-out {
     opacity: 0;
 }  
+
+
+/* Flower styles */
+.flower {
+    position: fixed;
+    width: 106px; /* Updated width */
+    height: 150px; /* Height as per your requirement */
+    cursor: grab;
+    z-index: 2000;
+}
+
+#left-flower {
+    left: 0;
+    top: 80%;
+    transform: translateY(-50%);
+}
+
+#right-flower {
+    right: 0;
+    top: 20%;
+    transform: translateY(-50%);
+}
+
+.flower.flipped {
+    transform: scaleX(-1); /* Flip horizontally */
+}
