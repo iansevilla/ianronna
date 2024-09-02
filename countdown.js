@@ -74,59 +74,76 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 let currentDragging = null;
+
+// Function to start dragging
+function startDragging(flower, event) {
+    if (currentDragging) return; // Prevent dragging if another flower is already being dragged
+
+    currentDragging = flower;
+
+    let shiftX = event.clientX - flower.getBoundingClientRect().left;
+    let shiftY = event.clientY - flower.getBoundingClientRect().top;
+
+    function moveAt(pageX, pageY) {
+        flower.style.left = pageX - shiftX + 'px';
+        flower.style.top = pageY - shiftY + 'px';
+    }
+
+    function onMouseMove(event) {
+        moveAt(event.pageX, event.pageY);
+    }
+
+    function onTouchMove(event) {
+        moveAt(event.touches[0].pageX, event.touches[0].pageY);
+    }
+
+    function onEnd() {
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onEnd);
+        document.removeEventListener('touchmove', onTouchMove);
+        document.removeEventListener('touchend', onEnd);
+        currentDragging = null;
+
+        // Snap to left or right side
+        if (parseInt(flower.style.left) < window.innerWidth / 2) {
+            flower.style.left = '0';
+            flower.style.transform = 'rotate(0deg)'; // Ensure image is not flipped
+        } else {
+            flower.style.left = (window.innerWidth - flower.offsetWidth) + 'px'; // Right edge
+            flower.style.transform = 'rotateY(180deg)'; // Flip image
+        }
+    }
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onEnd);
+    document.addEventListener('touchmove', onTouchMove);
+    document.addEventListener('touchend', onEnd);
+}
+
+// Attach event listeners
 document.querySelectorAll('.flower').forEach(function(flower) {
     flower.addEventListener('mousedown', function(event) {
-        if (currentDragging) return; // Prevent dragging if another flower is already being dragged
-
-        currentDragging = flower;
-
-        let shiftX = event.clientX - flower.getBoundingClientRect().left;
-        let shiftY = event.clientY - flower.getBoundingClientRect().top;
-
-        function moveAt(pageX, pageY) {
-            flower.style.left = pageX - shiftX + 'px';
-            flower.style.top = pageY - shiftY + 'px';
-        }
-
-        function onMouseMove(event) {
-            moveAt(event.pageX, event.pageY);
-        }
-
-        document.addEventListener('mousemove', onMouseMove);
-
-        function onMouseUp() {
-            document.removeEventListener('mousemove', onMouseMove);
-            document.removeEventListener('mouseup', onMouseUp);
-
-            // Snap to left or right side and flip image if needed
-            const flowerRect = flower.getBoundingClientRect();
-            const middleOfScreen = window.innerWidth / 2;
-
-            if (flowerRect.left < middleOfScreen) {
-                flower.style.left = '0';
-                flower.style.right = ''; // Clear any right property
-                flower.classList.remove('flipped');
-            } else {
-                flower.style.right = '0';
-                flower.style.left = ''; // Clear any left property
-                flower.classList.add('flipped');
-            }
-
-            currentDragging = null; // Reset currentDragging when done
-        }
-
-        document.addEventListener('mouseup', onMouseUp);
-
-        // Ensure dragging stops when clicking elsewhere
-        document.addEventListener('click', function(event) {
-            if (currentDragging && !currentDragging.contains(event.target)) {
-                // Trigger mouse up handler to stop dragging
-                onMouseUp();
-            }
-        });
+        startDragging(flower, event);
     });
 
-    flower.ondragstart = function() {
-        return false;
-    };
+    flower.addEventListener('touchstart', function(event) {
+        startDragging(flower, event);
+    });
+});
+
+// Handle click outside
+document.addEventListener('mousedown', function(event) {
+    if (currentDragging && !currentDragging.contains(event.target)) {
+        currentDragging.style.left = ''; // Reset position if click outside
+        currentDragging.style.top = '';
+        currentDragging = null;
+    }
+});
+
+document.addEventListener('touchstart', function(event) {
+    if (currentDragging && !currentDragging.contains(event.target)) {
+        currentDragging.style.left = ''; // Reset position if click outside
+        currentDragging.style.top = '';
+        currentDragging = null;
+    }
 });
