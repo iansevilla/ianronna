@@ -80,9 +80,16 @@ function startDragging(flower, event) {
     if (currentDragging) return; // Prevent dragging if another flower is already being dragged
 
     currentDragging = flower;
+    event.preventDefault(); // Prevent default behavior to avoid issues on touch devices
 
-    let shiftX = event.clientX - flower.getBoundingClientRect().left;
-    let shiftY = event.clientY - flower.getBoundingClientRect().top;
+    let shiftX, shiftY;
+    if (event.type === 'touchstart') {
+        shiftX = event.touches[0].clientX - flower.getBoundingClientRect().left;
+        shiftY = event.touches[0].clientY - flower.getBoundingClientRect().top;
+    } else {
+        shiftX = event.clientX - flower.getBoundingClientRect().left;
+        shiftY = event.clientY - flower.getBoundingClientRect().top;
+    }
 
     function moveAt(pageX, pageY) {
         flower.style.left = pageX - shiftX + 'px';
@@ -102,7 +109,6 @@ function startDragging(flower, event) {
         document.removeEventListener('mouseup', onEnd);
         document.removeEventListener('touchmove', onTouchMove);
         document.removeEventListener('touchend', onEnd);
-        currentDragging = null;
 
         // Snap to left or right side
         if (parseInt(flower.style.left) < window.innerWidth / 2) {
@@ -112,6 +118,8 @@ function startDragging(flower, event) {
             flower.style.left = (window.innerWidth - flower.offsetWidth) + 'px'; // Right edge
             flower.style.transform = 'rotateY(180deg)'; // Flip image
         }
+
+        currentDragging = null;
     }
 
     document.addEventListener('mousemove', onMouseMove);
