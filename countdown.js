@@ -92,8 +92,9 @@ function startDragging(flower, event) {
     }
 
     function moveAt(pageX, pageY) {
-        flower.style.left = pageX - shiftX + 'px';
-        flower.style.top = pageY - shiftY + 'px';
+        // Center the flower at the cursor/touch point
+        flower.style.left = (pageX - shiftX) + 'px';
+        flower.style.top = (pageY - shiftY) + 'px';
     }
 
     function onMouseMove(event) {
