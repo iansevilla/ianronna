@@ -87,12 +87,13 @@ function startDragging(flower, event) {
     event.preventDefault(); // Prevent default behavior to avoid issues on touch devices
 
     let shiftX, shiftY;
+    const rect = flower.getBoundingClientRect();
     if (event.type === 'touchstart') {
-        shiftX = event.touches[0].clientX - flower.getBoundingClientRect().left;
-        shiftY = event.touches[0].clientY - flower.getBoundingClientRect().top;
+        shiftX = event.touches[0].clientX - rect.left;
+        shiftY = event.touches[0].clientY - rect.top;
     } else {
-        shiftX = event.clientX - flower.getBoundingClientRect().left;
-        shiftY = event.clientY - flower.getBoundingClientRect().top;
+        shiftX = event.clientX - rect.left;
+        shiftY = event.clientY - rect.top;
     }
 
     function moveAt(pageX, pageY) {
@@ -102,11 +103,11 @@ function startDragging(flower, event) {
     }
 
     function onMouseMove(event) {
-        moveAt(event.pageX, event.pageY);
+        moveAt(event.clientX, event.clientY);
     }
 
     function onTouchMove(event) {
-        moveAt(event.touches[0].pageX, event.touches[0].pageY);
+        moveAt(event.touches[0].clientX, event.touches[0].clientY);
     }
 
     function onEnd() {
@@ -121,7 +122,7 @@ function startDragging(flower, event) {
             flower.style.transform = 'rotate(0deg)'; // Ensure image is not flipped
         } else {
             flower.style.left = (window.innerWidth - flower.offsetWidth) + 'px'; // Right edge
-            flower.style.transform = 'rotateY(180deg)'; // Flip image
+            flower.style.transform = 'scaleX(-1)'; // Flip image horizontally
         }
 
         currentDragging = null;
@@ -196,3 +197,19 @@ function hideCoverPage() {
     document.body.classList.remove('no-scroll');
     // Your code to hide the cover page
 }
+
+
+
+window.addEventListener('scroll', function() {
+    var headerDate = document.querySelector('.header-date');
+    var footer = document.querySelector('footer');
+    var footerRect = footer.getBoundingClientRect();
+    var viewportHeight = window.innerHeight;
+
+    if (footerRect.top <= viewportHeight) {
+        var overlap = (viewportHeight - footerRect.top);
+        headerDate.style.bottom = `${Math.max(overlap, 0)}px`; // Move up if overlapping
+    } else {
+        headerDate.style.bottom = '0'; // Default position
+    }
+});
