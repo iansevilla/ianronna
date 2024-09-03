@@ -1,6 +1,12 @@
 @font-face {
-    font-family: "Britany";
-    src: url('./font/WordSignature.ttf'); /* Updated path */
+    font-family: "ArielScript";
+    /*src: url('./font/WordSignature.ttf'); /* Updated path */
+    src: url('./font/Ariel Script.ttf'); 
+}
+@font-face {
+    font-family: "DailyScript";
+    /*src: url('./font/WordSignature.ttf'); /* Updated path */
+    src: url('./font/Party Script.otf'); 
 }
 
 body {
@@ -23,11 +29,23 @@ header {
 }
 
 .header-title {
-    font-family: "Britany";
-    font-size: 150px;
+    font-family: "ArielScript";
+    font-size: 70px;
     padding: 0;
+    padding-top:  20px;
     margin: 0;
-    background: rgba(221, 82, 82, 0.3); /* Adjust opacity as needed */
+    background: rgba(179, 68, 68, 0.3); /* Adjust opacity as needed */
+    cursor: default;
+    user-select: none;
+}
+
+.header-date {
+    font-family: "DailyScript";
+    font-size: 30px;
+    padding: 0;
+    padding-top:  0px;
+    margin: 0;
+    background: rgba(102, 0, 51, 1); /* Adjust opacity as needed */
     cursor: default;
     user-select: none;
 }
@@ -78,12 +96,25 @@ h3 {
     padding-left: 80px; /* Space for the icon */
 }
 
+/* Style for the h3 headers */
+h4 {
+    background-color: #35424a;
+    color: #ffffff;
+    padding: 10px;
+    cursor: pointer;
+    margin: 0;
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Vertically center the items */
+    position: relative; /* Ensure proper positioning of the icon */
+    padding-left: 80px; /* Space for the icon */
+}
+
 
 h5 {
     background-color: #f0f0f0;
     border-radius: 15px;
-    padding: 20px 15px;
-    color: #333;
+    padding: 15px 10px;
+    color: rgb(83, 23, 23);
     font-size: 1.25em;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -260,4 +291,9 @@ footer {
 
 .flower.flipped {
     transform: scaleX(-1); /* Flip horizontally */
+}
+
+
+.no-scroll {
+    overflow: hidden;
 }

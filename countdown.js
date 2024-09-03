@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
             var coverDiv = document.getElementById('cover-image');
             if (coverDiv) {
                 coverDiv.classList.add('fade-out');
+                playAudio();
+                setVolume(.4);
+                hideCoverPage();
                 setTimeout(function() {
                     coverDiv.style.display = 'none';
                 }, 500);
@@ -53,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     // Delay to ensure styles are applied properly
+    showCoverPage();
     setTimeout(() => {
         document.querySelectorAll('.flower').forEach(flower => {
             const isLeftFlower = flower.id === 'leftFlower';
@@ -156,3 +160,39 @@ document.addEventListener('touchstart', function(event) {
         currentDragging = null;
     }
 });
+
+
+const bgmPlayer = document.getElementById('bgm-player');
+
+// Function to play the audio
+function playAudio() {
+    bgmPlayer.play();
+    bgmPlayer.loop = true;
+}
+
+// Function to pause the audio
+function pauseAudio() {
+    bgmPlayer.pause();
+}
+
+// Function to stop the audio (pause and reset to start)
+function stopAudio() {
+    bgmPlayer.pause();
+    bgmPlayer.currentTime = 0; // Reset to the start of the audio
+}
+
+// Function to set the volume (0.0 to 1.0)
+function setVolume(volume) {
+    bgmPlayer.volume = volume;
+}
+
+function showCoverPage() {
+    document.body.classList.add('no-scroll');
+    // Your code to display the cover page
+}
+
+// Function to disable cover page
+function hideCoverPage() {
+    document.body.classList.remove('no-scroll');
+    // Your code to hide the cover page
+}
