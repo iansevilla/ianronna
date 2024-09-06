@@ -41,7 +41,7 @@ function toggleContent(id) {
                     behavior: 'smooth'
                 });
             }
-        }, 300); // Adjust delay if needed
+        }, 500); // Adjust delay if needed
     }
 }
 

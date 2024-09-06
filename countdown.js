@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isLeftFlower) {
                 flower.style.left = '0';
                 flower.style.right = ''; // Clear any right property
+                flower.style.top = '0%';
             } 
             
             if (isRightFlower) {
@@ -121,7 +122,7 @@ function startDragging(flower, event) {
             flower.style.left = '0';
             flower.style.transform = 'rotate(0deg)'; // Ensure image is not flipped
         } else {
-            flower.style.left = (window.innerWidth - flower.offsetWidth) + 'px'; // Right edge
+            flower.style.left = (window.innerWidth - flower.offsetWidth -7) + 'px'; // Right edge
             flower.style.transform = 'scaleX(-1)'; // Flip image horizontally
         }
 
@@ -184,7 +185,7 @@ function stopAudio() {
 
 // Function to set the volume (0.0 to 1.0)
 function setVolume(volume) {
-    bgmPlayer.volume = volume;
+    bgmPlayer.volume = 0;//volume;
 }
 
 function showCoverPage() {

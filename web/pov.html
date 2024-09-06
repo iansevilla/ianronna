@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Unlock</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .rounded-background {
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 700px;
+            margin: 50px auto;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for a card effect */
+        }
+        .qr-container {
+            position: relative;
+            margin: 20px 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px; /* Set a height to center the image vertically */
+        }
+        .responsive-image {
+            width: 50%; /* Scale the QR code image */
+            height: auto;
+            border-radius: 10px;
+            display: none; /* Initially hide the QR code */
+        }
+        .lock-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25em;
+            border-radius: 10px;
+            text-align: center;
+            padding: 20px;
+        }
+        #timer {
+            font-size: 1.25em;
+            color: white;
+            margin-bottom: 20px;
+        }
+        #unlockMessage {
+            display: none;
+            color: green;
+            font-size: 1.25em;
+            margin-top: 10px;
+        }
+        .invite-link {
+            display: none;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .invite-link a {
+            color: blue;
+            text-decoration: none; /* Remove underline from links */
+        }
+
+        .download-links a {
+            color: inherit; /* Ensure the color matches the surrounding text or image */
+            text-decoration: none; /* Remove underline from links */
+        }
+        .message-container {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .download-links {
+            text-align: center; /* Center-align the links */
+            margin: 20px 0; /* Add margin around the download section */
+        }
+        .download-links img {
+            width: 150px; /* Adjust size as needed */
+            margin: 10px; /* Add margin around each image */
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="rounded-background">
+        <div class="message-container">
+            <p>We’d love to capture every moment of our special day through your eyes! Please download the POV app and join our shared wedding folder to upload your favorite snapshots and memories. This way, we can all enjoy the day from different perspectives.</p>
+            
+            <p>To respect the moment, we kindly ask that you use the app before or after the ceremony, as we’ve hired a professional team to capture those special moments during the event.</p>
+            
+            <p><strong>To join:</strong></p>
+            <ol>
+                <li>Download the POV app</li>
+                <div class="download-links">
+                    <a href="https://apps.apple.com/us/app/pov-disposable-camera-events/id1636032890" target="_blank">
+                        <img src="../image/download/get-on-app.svg" alt="Get on the App Store">
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.untitledshows.pov&pcampaignid=web_share" target="_blank">
+                        <img src="../image/download/get-on-google-play.svg" alt="Get on Google Play">
+                    </a>
+                </div>
+                <li>Scan the QR code or use the download link we’ll provide to join our event folder.</li>
+                <li>Start snapping and uploading!</li>
+            </ol>
+            
+            <p>Thank you for helping us preserve these beautiful memories!</p>
+
+            <!-- QR Code and Timer Section -->
+            <div class="qr-container">
+                <img src="../image/qr/povqrLock.png" alt="QR Code Locked" class="responsive-image" id="qrCode">
+                <div class="lock-overlay" id="lockOverlay">
+                    <div id="timer">Loading...</div>
+                </div>
+                <div id="unlockMessage">The QR code is now available! Scan to join.</div>
+            </div>
+
+            <!-- Invite Link Section -->
+            <div class="invite-link" id="inviteLink">
+                <p>Or, join with this link:</p>
+                <a href="https://pov.camera/qr/571990AC-9950-4286-A777-F6D83326936F" target="_blank">https://pov.camera/qr/571990AC-9950-4286-A777-F6D83326936F</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateUnlockStatus() {
+            const qrImage = document.getElementById('qrCode');
+            const lockOverlay = document.getElementById('lockOverlay');
+            const timer = document.getElementById('timer');
+            const unlockMessage = document.getElementById('unlockMessage');
+            const inviteLink = document.getElementById('inviteLink');
+    
+            // Set the unlock time (ISO format)
+            const unlockTime = new Date('2024-11-30T08:00:00'); // Adjust time (YYYY-MM-DDTHH:MM:SS)
+    
+            // Check if the date is valid
+            if (isNaN(unlockTime.getTime())) {
+                timer.innerText = "Invalid Date";
+                return;
+            }
+    
+            const currentTime = new Date();
+            const timeRemaining = unlockTime - currentTime;
+    
+            if (timeRemaining <= 0) {
+                qrImage.src = '../image/qr/povqr.png'; // Swap to unlocked QR code
+                qrImage.style.display = 'block'; // Show the QR code
+                lockOverlay.style.display = 'none'; // Hide the lock overlay
+                unlockMessage.style.display = 'block'; // Show the unlock message
+                inviteLink.style.display = 'block'; // Show the invite link
+            } else {
+                qrImage.src = '../image/qr/povqrLock.png'; // Keep the locked image until unlock
+                qrImage.style.display = 'block'; // Show the locked QR code
+    
+                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+    
+                timer.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+        }
+    
+        // Initial call to set the timer on page load
+        updateUnlockStatus();
+    
+        // Update the timer every second
+        setInterval(updateUnlockStatus, 1000);
+    </script>
+</body>
+</html>
