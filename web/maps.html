@@ -179,18 +179,21 @@
 
     <script>
         function checkPassword() {
-            const encryptedPassword = localStorage.getItem('encryptedPassword'); // Get encrypted password from local storage
             const inputPassword = document.getElementById('password').value;
-            const decryptedPassword = atob(encryptedPassword); // Decode Base64
-
+            const demoPassword = 'VGVzdA=='; // Replace with the actual password encoded in Base64
+            const decryptedPassword = atob(demoPassword); // Decode Base64
+    
             if (inputPassword === decryptedPassword) {
                 document.querySelector('.password-prompt').style.display = 'none';
                 document.getElementById('content').style.display = 'block';
+    
+                // Store the correct password in local storage once the user enters it correctly
+                localStorage.setItem('encryptedPassword', demoPassword);
             } else {
                 alert('Incorrect password. Please try again.');
             }
         }
-
+    
         function autoFillPassword() {
             const encryptedPassword = localStorage.getItem('encryptedPassword'); // Get encrypted password from local storage
             if (encryptedPassword) {
@@ -198,10 +201,6 @@
                 document.getElementById('password').value = decryptedPassword; // Autofill the password
             }
         }
-
-        // Store a Base64 encoded password in local storage (for demo purposes only)
-        const demoPassword = 'MDEwMTE4'; // Replace with the actual password encoded in Base64
-        localStorage.setItem('encryptedPassword', demoPassword);
     </script>
 
 </body>
