@@ -121,15 +121,13 @@
                     </ol>
                 </div>
                 <div class="step">
-                    <h3>Tricycle to San Antonio De Padua Silang</h3>
+                    <h3>Tricycle to Church</h3>
                     <ol>
                         <li>After disembarking at Banaybanay Rd., look for a tricycle terminal or flag down a tricycle.</li>
-                        <li>Let the tricycle driver know you need to go to San Antonio De Padua Silang, and they will take you directly to your destination.</li>
+                        <li>Let the tricycle driver know you need to go to the Church, and they will take you directly to your destination.</li>
                     </ol>
                 </div>
             </section>
-
-            <!-- Add other travel sections -->
 
             <div class="note">
                 <p><strong>Important Note:</strong> As this is a holiday, please anticipate longer travel times.</p>
@@ -139,8 +137,8 @@
     </div>
 
     <script>
-        // Demo password (for simplicity, using Base64 for this example)
-        const correctPassword = 'MDEwMTE4'; // Password is Base64 encoded for '0118'
+        // Demo password (Base64 encoded)
+        const correctPassword = 'VGVzdA=='; // Password is Base64 encoded for '0118'
 
         // Function to check password input
         function checkPassword() {
@@ -148,7 +146,7 @@
             const encryptedInput = btoa(inputPassword); // Encode input to Base64
 
             if (encryptedInput === correctPassword) {
-                localStorage.setItem('encryptedPassword', encryptedInput); // Store encrypted password in localStorage
+                localStorage.setItem('encryptedPassword', encryptedInput); // Store encrypted password in localStorage only after correct password
                 showContent();
             } else {
                 alert('Incorrect password. Please try again.');
@@ -175,6 +173,5 @@
             }
         }
     </script>
-
 </body>
 </html>
