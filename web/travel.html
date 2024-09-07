@@ -64,88 +64,117 @@
             margin-top: 20px;
         }
 
-        .info {
-           
+        .password-prompt {
+            text-align: center;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        .password-input {
+            font-size: 1em;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        .submit-button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 4px;
+            border: none;
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        .hidden-content {
+            display: none;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Travel Guide</h1>
+<body onload="initializePage()">
 
-        <section class="origin">
-            <h2>From PITX</h2>
-            <div class="step">
-                <h3>Bus to Tagaytay via Aguinaldo Highway</h3>
-                <ol>
-                    <li>At PITX, find buses traveling to Tagaytay, which generally follow Aguinaldo Highway.</li>
-                    <li>Once on the bus, inform the conductor that you need to be dropped off at Banaybanay Rd. Verify that the bus will pass this route to avoid any issues.</li>
-                </ol>
-            </div>
-            <div class="step">
-                <h3>Tricycle to San Antonio: De Padua Silang</h3>
-                <ol>
-                    <li>After disembarking at Banaybanay Rd., look for a tricycle terminal or flag down a tricycle.</li>
-                    <li>Let the tricycle driver know you need to go to San Antonio De Padua Silang, and they will take you directly to your destination.</li>
-                </ol>
-            </div>
-        </section>
+    <div class="password-prompt" id="passwordPrompt">
+        <h2>Please Enter RSVP Secret Word</h2>
+        <input type="password" id="password" class="password-input" placeholder="Enter password">
+        <button class="submit-button" onclick="checkPassword()">Submit</button>
+    </div>
 
-        <section class="origin">
-            <h2>From Alabang</h2>
-            <div class="step">
-                <h3>Bus or Jeepney to Balibago</h3>
-                <ol>
-                    <li>At Alabang, search for buses or jeepneys heading to Balibago, which usually travel along SLEX.</li>
-                </ol>
-            </div>
-            <div class="step">
-                <h3>Jeepney to Tagaytay via Santa Rosa</h3>
-                <ol>
-                    <li>At Balibago, locate a jeepney heading to Tagaytay.</li>
-                    <li>Once aboard, tell the driver you need to be dropped off at Pooc Rd. Confirm that the jeepney will pass this route to ensure a smooth trip.</li>
-                </ol>
-            </div>
-            <div class="step">
-                <h3>Tricycle to San Antonio De Padua Silang</h3>
-                <ol>
-                    <li>After getting off at Pooc Rd., either flag down a tricycle or find a tricycle terminal.</li>
-                    <li>Inform the driver you need to go to San Antonio De Padua Silang, and they will take you directly to your destination.</li>
-                </ol>
-            </div>
-        </section>
-        font-size: 0.9em;
-        color: #555;
-        margin-top: 20px;
-        <section class="origin">
-            <h2>From Makati (Note: P2P buses are not available during holidays)</h2>
-            <div class="step">
-                <h3>P2P Bus to Nuvali</h3>
-                <ol>
-                    <li>At Makati Ayala Malls, look for P2P buses heading to Nuvali, which typically travel along SLEX.</li>
-                    <li><strong>Note:</strong><span "color: #555 font-size:'0.9em'">P2P buses might not be operational during holidays. If unavailable, please consider finding an alternative route to Nuvali. This information is particularly useful for travelers planning a staycation in the area.</span></li>
-                </ol>
-            </div>
-            <div class="step">
-                <h3>Nuvali to Tagaytay via Santa Rosa</h3>
-                <ol>
-                    <li>From Nuvali, find a jeepney heading to Tagaytay.</li>
-                    <li>Once aboard, inform the driver you need to be dropped off at Pooc Rd. Confirm the jeepney will pass this route.</li>
-                </ol>
-            </div>
-            <div class="step">
-                <h3>Tricycle to San Antonio De Padua Silang</h3>
-                <ol>
-                    <li>After arriving at Pooc Rd., flag down a tricycle or locate a tricycle terminal.</li>
-                    <li>Let the driver know you need to go to San Antonio De Padua Silang, and they will take you directly to your destination.</li>
-                </ol>
-            </div>
-        </section>
+    <div id="content" class="hidden-content">
+        <div class="container">
+            <h1>Travel Guide</h1>
 
-        <div class="note">
-            <p><strong>Important Note:</strong> As this is a holiday, please anticipate longer travel times.</p>
-            <p><strong>Alternative Transportation:</strong> Grab is available in the area, but expect higher rates due to the holiday and the distance.</p>
+            <section class="origin">
+                <h2>From PITX</h2>
+                <div class="step">
+                    <h3>Bus to Tagaytay via Aguinaldo Highway</h3>
+                    <ol>
+                        <li>At PITX, find buses traveling to Tagaytay, which generally follow Aguinaldo Highway.</li>
+                        <li>Once on the bus, inform the conductor that you need to be dropped off at Banaybanay Rd. Verify that the bus will pass this route to avoid any issues.</li>
+                    </ol>
+                </div>
+                <div class="step">
+                    <h3>Tricycle to San Antonio De Padua Silang</h3>
+                    <ol>
+                        <li>After disembarking at Banaybanay Rd., look for a tricycle terminal or flag down a tricycle.</li>
+                        <li>Let the tricycle driver know you need to go to San Antonio De Padua Silang, and they will take you directly to your destination.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Add other travel sections -->
+
+            <div class="note">
+                <p><strong>Important Note:</strong> As this is a holiday, please anticipate longer travel times.</p>
+                <p><strong>Alternative Transportation:</strong> Grab is available in the area, but expect higher rates due to the holiday and the distance.</p>
+            </div>
         </div>
     </div>
+
+    <script>
+        // Demo password (for simplicity, using Base64 for this example)
+        const correctPassword = 'MDEwMTE4'; // Password is Base64 encoded for '0118'
+
+        // Function to check password input
+        function checkPassword() {
+            const inputPassword = document.getElementById('password').value;
+            const encryptedInput = btoa(inputPassword); // Encode input to Base64
+
+            if (encryptedInput === correctPassword) {
+                localStorage.setItem('encryptedPassword', encryptedInput); // Store encrypted password in localStorage
+                showContent();
+            } else {
+                alert('Incorrect password. Please try again.');
+            }
+        }
+
+        // Function to show content and hide password prompt
+        function showContent() {
+            document.getElementById('passwordPrompt').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        }
+
+        // Initialize page on load
+        function initializePage() {
+            const storedPassword = localStorage.getItem('encryptedPassword');
+
+            // If the stored password exists and matches the correct one, show content
+            if (storedPassword && storedPassword === correctPassword) {
+                showContent();
+            } else {
+                // Show password prompt if no valid password is found
+                document.getElementById('passwordPrompt').style.display = 'block';
+                document.getElementById('content').style.display = 'none';
+            }
+        }
+    </script>
+
 </body>
 </html>
