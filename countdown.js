@@ -185,7 +185,7 @@ function stopAudio() {
 
 // Function to set the volume (0.0 to 1.0)
 function setVolume(volume) {
-    bgmPlayer.volume = 0;//volume;
+    bgmPlayer.volume = volume;
 }
 
 function showCoverPage() {

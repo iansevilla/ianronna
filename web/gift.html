@@ -5,19 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Images</title>
     <style>
-        body {
+        body, html {
             margin: 0;
             padding: 0;
+            height: 100%; /* Ensure body and html take up the full height */
             font-family: Arial, sans-serif;
         }
         .image-scroll-container {
-            display: flex; /* Stack images vertically */
-            flex-direction: column; /* Arrange images in a column */
+            display: flex;
+            flex-direction: column;
             gap: 10px; /* Space between images */
-            padding: 80px; /* Optional: Padding around the images */
+            padding: 40px;
+            align-items: center; /* Center images horizontally */
+            justify-content: flex-start; /* Top align content */
+            height: 100%; /* Full height for the container */
+        }
+        .image-wrapper {
+            max-width: 400px; /* Maximum width for the container */
+            width: 100%; /* Ensure it fills available width but respects max-width */
+            box-sizing: border-box; /* Include padding in the width calculation */
         }
         .responsive-image {
-            width: 100%; /* Scale image to fit container width */
+            width: 100%; /* Image scales to fit the container width */
             height: auto; /* Maintain image’s aspect ratio */
             border-radius: 10px; /* Optional: Rounded corners */
         }
@@ -30,20 +39,24 @@
             text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
+        /* Add padding to ensure enough space at the bottom for smaller devices */
+        .bottom-space {
+            height: 1000px; /* Adjust the height as needed */
+        }
     </style>
 </head>
 <body>
     <div class="image-scroll-container">
-        <img src="../image/qr/bpi.png" alt="Image 1" class="responsive-image">
-        <img src="../image/qr/gcash.png" alt="Image 2" class="responsive-image">
-        <img src="../image/qr/maya.png" alt="Image 3" class="responsive-image">
+        <div class="image-wrapper">
+            <img src="../image/qr/bpi.png" alt="Image 1" class="responsive-image">
+        </div>
+        <div class="image-wrapper">
+            <img src="../image/qr/gcash.png" alt="Image 2" class="responsive-image">
+        </div>
+        <div class="image-wrapper">
+            <img src="../image/qr/maya.png" alt="Image 3" class="responsive-image">
+        </div>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <div class="bottom-space"></div> <!-- Ensures extra space at the bottom -->
 </body>
 </html>

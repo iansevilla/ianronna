@@ -128,6 +128,54 @@
                     </ol>
                 </div>
             </section>
+            <section class="origin">
+                <h2>From Alabang</h2>
+                <div class="step">
+                    <h3>Bus or Jeepney to Balibago</h3>
+                    <ol>
+                        <li>At Alabang, search for buses or jeepneys heading to Balibago, which usually travel along SLEX.</li>
+                    </ol>
+                </div>
+                <div class="step">
+                    <h3>Jeepney to Tagaytay via Santa Rosa</h3>
+                    <ol>
+                        <li>At Balibago, locate a jeepney heading to Tagaytay.</li>
+                        <li>Once aboard, tell the driver you need to be dropped off at Pooc Rd. Confirm that the jeepney will pass this route to ensure a smooth trip.</li>
+                    </ol>
+                </div>
+                <div class="step">
+                    <h3>Tricycle to San Antonio De Padua Silang</h3>
+                    <ol>
+                        <li>After getting off at Pooc Rd., either flag down a tricycle or find a tricycle terminal.</li>
+                        <li>Inform the driver you need to go to San Antonio De Padua Silang, and they will take you directly to your destination.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section class="origin">
+                <h2>From Makati (Note: P2P buses are not available during holidays)</h2>
+                <div class="step">
+                    <h3>P2P Bus to Nuvali</h3>
+                    <ol>
+                        <li>At Makati Ayala Malls, look for P2P buses heading to Nuvali, which typically travel along SLEX.</li>
+                        <li><strong>Note:</strong> P2P buses might not be operational during holidays. If unavailable, please consider finding an alternative route to Nuvali. This information is particularly useful for travelers planning a staycation in the area.</li>
+                    </ol>
+                </div>
+                <div class="step">
+                    <h3>Nuvali to Tagaytay via Santa Rosa</h3>
+                    <ol>
+                        <li>From Nuvali, find a jeepney heading to Tagaytay.</li>
+                        <li>Once aboard, inform the driver you need to be dropped off at Pooc Rd. Confirm the jeepney will pass this route.</li>
+                    </ol>
+                </div>
+                <div class="step">
+                    <h3>Tricycle to San Antonio De Padua Silang</h3>
+                    <ol>
+                        <li>After arriving at Pooc Rd., flag down a tricycle or locate a tricycle terminal.</li>
+                        <li>Let the driver know you need to go to San Antonio De Padua Silang, and they will take you directly to your destination.</li>
+                    </ol>
+                </div>
+            </section>
 
             <div class="note">
                 <p><strong>Important Note:</strong> As this is a holiday, please anticipate longer travel times.</p>
@@ -137,13 +185,11 @@
     </div>
 
     <script>
-        // Demo password (Base64 encoded)
-        const correctPassword = 'VGVzdA=='; // Password is Base64 encoded for '0118'
-
+        const correctPassword = 'MDEwMTE4'; 
         // Function to check password input
         function checkPassword() {
             const inputPassword = document.getElementById('password').value;
-            const encryptedInput = btoa(inputPassword); // Encode input to Base64
+            const encryptedInput = btoa(inputPassword);
 
             if (encryptedInput === correctPassword) {
                 localStorage.setItem('encryptedPassword', encryptedInput); // Store encrypted password in localStorage only after correct password

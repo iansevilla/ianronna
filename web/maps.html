@@ -180,8 +180,8 @@
     <script>
         function checkPassword() {
             const inputPassword = document.getElementById('password').value;
-            const demoPassword = 'VGVzdA=='; // Replace with the actual password encoded in Base64
-            const decryptedPassword = atob(demoPassword); // Decode Base64
+            const demoPassword = 'MDEwMTE4'; 
+            const decryptedPassword = atob(demoPassword); 
     
             if (inputPassword === decryptedPassword) {
                 document.querySelector('.password-prompt').style.display = 'none';
@@ -193,11 +193,11 @@
                 alert('Incorrect password. Please try again.');
             }
         }
-    
+     
         function autoFillPassword() {
-            const encryptedPassword = localStorage.getItem('encryptedPassword'); // Get encrypted password from local storage
+            const encryptedPassword = localStorage.getItem('encryptedPassword');
             if (encryptedPassword) {
-                const decryptedPassword = atob(encryptedPassword); // Decode Base64
+                const decryptedPassword = atob(encryptedPassword); 
                 document.getElementById('password').value = decryptedPassword; // Autofill the password
             }
         }
