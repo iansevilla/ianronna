@@ -12,21 +12,21 @@
         }
 
         .map-section {
-            background-color: #f9f9f9; /* Background color for the section */
-            padding: 20px; /* Padding around the content */
-            border-radius: 8px; /* Rounded corners for the section */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for a subtle 3D effect */
-            margin-bottom: 40px; /* Add spacing between sections */
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
         }
 
         .map-container {
-            margin-bottom: 20px; /* Add spacing between maps and navigation links */
+            margin-bottom: 20px;
         }
 
         .map-frame {
             position: relative;
             width: 100%;
-            padding-bottom: 100%; /* 1:1 aspect ratio for square */
+            padding-bottom: 100%;
             height: 0;
             overflow: hidden;
         }
@@ -48,8 +48,8 @@
         }
 
         .link-container a {
-            color: inherit; /* Ensure the color matches the surrounding text or image */
-            text-decoration: none; /* Remove underline from links */
+            color: inherit;
+            text-decoration: none;
         }
 
         .link-container {
@@ -58,8 +58,8 @@
         }
 
         .link-container img {
-            width: 40px; /* Adjust the size of the icons */
-            height: 40px; /* Enforce a 40x40 size */
+            width: 40px;
+            height: 40px;
             margin: 10px;
             cursor: pointer;
         }
@@ -85,36 +85,42 @@
         .password-prompt {
             text-align: center;
             margin: 20px;
-            background-color: #ffffff; /* White background for the password area */
-            border-radius: 8px; /* Rounded corners for the password area */
-            padding: 20px; /* Padding around the password input and button */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for a subtle 3D effect */
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .password-input {
             font-size: 1em;
             padding: 10px;
             margin: 10px;
-            border-radius: 4px; /* Rounded corners for the input field */
-            border: 1px solid #ddd; /* Light border for the input field */
-            width: 80%; /* Adjust width as needed */
-            max-width: 300px; /* Maximum width for the input field */
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            width: 80%;
+            max-width: 300px;
         }
 
         .submit-button {
             padding: 10px 20px;
             font-size: 1em;
             cursor: pointer;
-            border-radius: 4px; /* Rounded corners for the button */
-            border: none; /* Remove default border */
-            background-color: #007bff; /* Button background color */
-            color: #ffffff; /* Button text color */
+            border-radius: 4px;
+            border: none;
+            background-color: #007bff;
+            color: #ffffff;
         }
 
         .note {
             font-size: 1.2em;
             color: #e74c3c;
             margin-bottom: 20px;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9em;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -127,54 +133,11 @@
         <h2>Please Enter RSVP Secret Word</h2>
         <input type="password" id="password" class="password-input" placeholder="Enter password">
         <button class="submit-button" onclick="checkPassword()">Submit</button>
+        <div id="error-message" class="error-message"></div> <!-- Error message container -->
     </div>
 
     <div id="content" class="hidden-content">
-        <div class="map-section">
-            <div class="map-container">
-                <h2>Ceremony</h2>
-                <p>Location: Silang, Cavite</p>
-                <div class="map-frame">
-                    <iframe src="https://www.google.com/maps/embed?pb=1m18!1m12!1m3!1d3868.0527071440156!2d120.98997897737338!3d14.191691286247723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd7c0265859361%3A0xa4a9b11e95646896!2sSan%20Antonio%20de%20Padua%20Parish!5e0!3m2!1sen!2sph!4v1725141804491!5m2!1sen!2sph" 
-                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-                <div class="link-container">
-                    <a href="https://ul.waze.com/ul?preview_venue_id=79298702.792921483.3700019&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location" target="_blank">
-                        <img src="../image/download/waze-icon.svg" alt="Waze icon">
-                    </a>
-                    <a href="https://maps.app.goo.gl/PyRe33CCtzMvh8rg7" target="_blank">
-                        <img src="../image/download/google-map-icon.svg" alt="Google Maps icon">
-                    </a>
-                </div>
-                <div class="nav-text">
-                    Click the icons to navigate via Waze or Google Maps.
-                </div>
-            </div>
-        </div>
-
-        <div class="divider"></div> <!-- Divider between maps -->
-
-        <div class="map-section">
-            <div class="map-container">
-                <h2>Reception</h2>
-                <p>Location: Silang, Cavite</p>
-                <div class="map-frame">
-                    <iframe src="https://www.google.com/maps/embed?pb=1m18!1m12!1m3!1d15474.608500825681!2d120.97561008041386!3d14.156538086563334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd797fbfb9916d%3A0xbf4907ef07063182!2sThe%20Pulo%20Events%20Place!5e0!3m2!1sen!2sph!4v1725666188483!5m2!1sen!2sph" 
-                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-                <div class="link-container">
-                    <a href="https://embed.waze.com/iframe?zoom=16&lat=14.156294&lon=120.985655&ct=livemap" target="_blank">
-                        <img src="../image/download/waze-icon.svg" alt="Waze icon">
-                    </a>
-                    <a href="https://maps.app.goo.gl/cmw8DjqqQG5K73NG8" target="_blank">
-                        <img src="../image/download/google-map-icon.svg" alt="Google Maps icon">
-                    </a>
-                </div>
-                <div class="nav-text">
-                    Click the icons to navigate via Waze or Google Maps.
-                </div>
-            </div>
-        </div>
+        <!-- Map sections go here -->
     </div>
 
     <script>
@@ -187,18 +150,23 @@
                 document.querySelector('.password-prompt').style.display = 'none';
                 document.getElementById('content').style.display = 'block';
     
-                // Store the correct password in local storage once the user enters it correctly
                 localStorage.setItem('encryptedPassword', demoPassword);
             } else {
-                alert('Incorrect password. Please try again.');
+                const errorMessageElement = document.getElementById('error-message');
+                errorMessageElement.textContent = 'Incorrect password. Please try again.';
+    
+                // Remove the error message after 5 seconds
+                setTimeout(() => {
+                    errorMessageElement.textContent = '';
+                }, 5000);
             }
         }
-     
+    
         function autoFillPassword() {
             const encryptedPassword = localStorage.getItem('encryptedPassword');
             if (encryptedPassword) {
-                const decryptedPassword = atob(encryptedPassword); 
-                document.getElementById('password').value = decryptedPassword; // Autofill the password
+                const decryptedPassword = atob(encryptedPassword);
+                document.getElementById('password').value = decryptedPassword;
             }
         }
     </script>
