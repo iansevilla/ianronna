@@ -214,3 +214,75 @@ window.addEventListener('scroll', function() {
         headerDate.style.bottom = '0'; // Default position
     }
 });
+
+document.addEventListener('contentToggle', function(event) {
+    const sectionId = event.detail.sectionId;
+    const expanded = event.detail.expanded;
+
+    console.log(`Section ${sectionId} was toggled. Expanded: ${expanded}`);
+
+    // Example: if a specific section is expanded, trigger some action
+    if (sectionId === 'videoPrenup') {
+        if(expanded)
+        {
+            if (player) {
+                player.playVideo();
+            }
+        }
+        else
+        {
+           // bgmPlayer.play();
+            player.pauseVideo();
+        }
+
+        // You can call functions or manipulate the DOM based on the event here
+    }
+    else
+    {
+        //bgmPlayer.play();
+        player.pauseVideo();
+    }
+    
+});
+
+let player; // Declare the player variable globally
+
+// Load the YouTube IFrame API and create a player instance
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtube-video', {
+        height: '390',
+        width: '640',
+        videoId: 'vZVZMuK2cac', // Replace with your YouTube video ID
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+// Player ready event
+function onPlayerReady(event) {
+    console.log('YouTube Player is ready');
+}
+
+// Player state change event
+function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING) {
+        console.log('Video is playing');
+        bgmPlayer.pause();
+    }
+    else
+    {
+        bgmPlayer.play();
+    }
+}
+
+// Pause the video when the window/tab goes out of focus
+document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden') {
+        if (player && player.getPlayerState() == YT.PlayerState.PLAYING) {
+            player.pauseVideo();
+            console.log('Video paused due to tab/window out of focus');
+        }
+    }
+});

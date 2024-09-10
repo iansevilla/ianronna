@@ -10,10 +10,20 @@ function toggleContent(id) {
     });
 
     // Toggle the clicked section
-    content.classList.toggle('expanded');
+    const isExpanded = content.classList.toggle('expanded');
+
+    // Dispatch a custom event 'contentToggle' with detail containing the section ID and status
+    const event = new CustomEvent('contentToggle', {
+        detail: {
+            sectionId: id,
+            expanded: isExpanded
+        }
+    });
+    document.dispatchEvent(event);
+
 
     // Scroll the expanded content into view with adjusted offset
-    if (content.classList.contains('expanded')) {
+    if (isExpanded) {
         setTimeout(() => {
             const header = document.querySelector('header');
             const headerHeight = header.offsetHeight;
