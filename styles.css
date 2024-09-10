@@ -287,6 +287,7 @@ footer {
     width: 100%;
     height: auto; /* Maintains aspect ratio */
     max-height: 100vh; /* Prevents image from getting too tall */
+    max-width: 700px; /* Limits the image width to 400px */
 }
 
 #cover-image.fade-out {

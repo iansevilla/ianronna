@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (coverDiv) {
                 coverDiv.classList.add('fade-out');
                 playAudio();
-                setVolume(.4);
+                setVolume(.67);
                 hideCoverPage();
                 setTimeout(function() {
                     coverDiv.style.display = 'none';
