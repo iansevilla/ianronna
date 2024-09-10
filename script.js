@@ -50,7 +50,7 @@ let currentIndex = 0;
 const slideshow = document.querySelector('.slideshow');
 const images = document.querySelectorAll('.slideshow img');
 const totalImages = images.length;
-const interval = 3000; // Interval in milliseconds (e.g., 3000ms = 3 seconds)
+const interval = 10000; // Interval in milliseconds (e.g., 3000ms = 3 seconds)
 
 let startX;
 
